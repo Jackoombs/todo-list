@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List!</title>
+<script defer src="index.bundle.js"></script></head>
+<body>
+  <div class="content">
+    <header>
+      <h1>TO-DO-IT</h1>
+    </header>
+    <aside class="myProjects">
+      <div class="myProjectTitle">
+        <h2>Your Projects</h2>
+        <i class="fa-solid fa-paintbrush fa-2x"></i>
+      </div>
+      <ul class="projectList"></ul>
+    </aside>
+    <main>
+    </main>
+    <aside class="recentProjects">
+      <h2>Recent Projects</h2>
+    </aside>
+    <footer>
+      <button class="newItem" id="newProject">New Project</button>
+      <button class="newItem" id="newTodo">New Todo</button>
+    </footer>
+  </div>
+
+  <div class="modal hide" id="projectModal">
+    <form class="projectForm">
+      <label for="projectInput">Project Name</label>
+      <input type="text" id="projectInput">
+      <button id="sumbitProject" type="submit">ADD +</button> 
+    </form>
+  </div>
+  <div class="modal" id="todoModal">
+    <form class="modalForm">
+      <div class="textInput">
+        <label for="task">Task</label>
+        <input type="text" id="task"> 
+      </div>
+      <div class="textInput">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows=5"></textarea>
+      </div>
+      <div class="textInput">
+        <label for="dueDate">Due Date</label>
+        <input type="date" id="dueDate"a> 
+      </div>
+      <div class="radio">
+        <div class="radioContainer">
+          <input type="radio" name="priority" id="urgent">
+          <label for="urgent">Urgent!</label>
+        </div>
+        <div class="radioContainer">
+          <input type="radio" name="priority" id="mediumUrgent">
+          <label for="mediumUrgent">Wait!</label>
+        </div>
+        <div class="radioContainer">
+          <input type="radio" name="priority" id="notUrgent">
+          <label for="notUrgent">Chill!</label>
+        </div>
+      </div>
+      <button type="submit">ADD +</button>
+    </form>
+  </div>
+</body>
+</html>
