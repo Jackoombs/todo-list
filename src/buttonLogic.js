@@ -7,6 +7,7 @@ const buttonLogic = () => {
     newItemButtons()
     modalExit()
     submitNewProject()
+    submitNewTask()
   }
 
   const newItemButtons = () => {
@@ -33,9 +34,24 @@ const buttonLogic = () => {
     const form = document.querySelector('.projectForm')
     form.addEventListener('submit', (e) => {
       e.preventDefault()
-      const input = document.getElementById('projectInput')
-      const project = new projectControl.Project(input.value)
-      displayControl.displayProject(project)
+      const title = document.getElementById('projectInput').value
+      const project = new projectControl.Project(title)
+      displayControl.updateDisplay(project)
+      displayControl.toggleModal(e.target.parentElement)
+      form.reset();
+    })
+  }
+
+  const submitNewTask = () => {
+    const form = document.querySelector('.modalForm')
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const task = document.getElementById('task').value
+      const description = document.getElementById('description').value
+      const dueDate = document.getElementById('dueDate').value
+      const priority = document.getElementById('urgent').checked
+      const todo = new projectControl.Todo(task, description, dueDate, priority)
+      projectControl.createTodoCard(todo)
       displayControl.toggleModal(e.target.parentElement)
       form.reset();
     })
@@ -43,15 +59,31 @@ const buttonLogic = () => {
 
   const addItemClick = (item) => {
     item.addEventListener('click', (e) => {
-      const index = e.target.getAttribute('dataset-index')
-      const project = projectControl.getProject(index)
-      displayControl.displayProject(project)
+      const id = Number(e.target.getAttribute('dataset-id'))
+      const project = projectControl.getProject(id)
+      displayControl.updateDisplay(project)
+    })
+  }
+
+  const removeProjectClick = (button) => {
+    button.addEventListener('click', () => {
+      const project = projectControl.getActiveProject()
+      projectControl.removeProject(project)
+    })
+  }
+
+  const taskFinishedClick = (button) => {
+    button.addEventListener('click', () => {
+      button.parentElement.classList.toggle('taskComplete')
     })
   }
 
   return {
     initButtons,
-    addItemClick
+    addItemClick,
+    submitNewTask,
+    taskFinishedClick,
+    removeProjectClick
   }
 }
 

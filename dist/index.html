@@ -20,9 +20,6 @@
     </aside>
     <main>
     </main>
-    <aside class="recentProjects">
-      <h2>Recent Projects</h2>
-    </aside>
     <footer>
       <button class="newItem" id="newProject">New Project</button>
       <button class="newItem" id="newTodo">New Todo</button>
@@ -36,33 +33,23 @@
       <button id="sumbitProject" type="submit">ADD +</button> 
     </form>
   </div>
-  <div class="modal" id="todoModal">
+  <div class="modal hide" id="todoModal">
     <form class="modalForm">
-      <div class="textInput">
+      <div class="inputContainer">
         <label for="task">Task</label>
         <input type="text" id="task"> 
       </div>
-      <div class="textInput">
+      <div class="inputContainer">
         <label for="description">Description</label>
         <textarea name="description" id="description" cols="30" rows=5"></textarea>
       </div>
-      <div class="textInput">
+      <div class="inputContainer">
         <label for="dueDate">Due Date</label>
         <input type="date" id="dueDate"a> 
       </div>
-      <div class="radio">
-        <div class="radioContainer">
-          <input type="radio" name="priority" id="urgent">
-          <label for="urgent">Urgent!</label>
-        </div>
-        <div class="radioContainer">
-          <input type="radio" name="priority" id="mediumUrgent">
-          <label for="mediumUrgent">Wait!</label>
-        </div>
-        <div class="radioContainer">
-          <input type="radio" name="priority" id="notUrgent">
-          <label for="notUrgent">Chill!</label>
-        </div>
+      <div class="inputContainer">
+        <label for="urgent">Is it Urgent?</label>
+        <input type="checkbox" name="priority" id="urgent">
       </div>
       <button type="submit">ADD +</button>
     </form>
